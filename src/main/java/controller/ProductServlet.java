@@ -59,6 +59,24 @@ public class ProductServlet extends HttpServlet {
             case "create":
                 showCreatProduct(request, response);
                 break;
+            case "edit":
+                showEditProduct(request,response);
+                break;
+        }
+    }
+    private void showEditProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = productService.findById(id);
+        request.setAttribute("o",product);
+        List<Category> categories = categoryService.fillAll();
+        request.setAttribute("categories",categories);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("Edit.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
