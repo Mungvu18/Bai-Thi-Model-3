@@ -28,6 +28,25 @@ public class ProductServlet extends HttpServlet {
             case "create":
                 createProduct(request, response);
                 break;
+            case "edit":
+                editProduct(request,response);
+                break;
+        }
+    }
+    private void editProduct(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        Double price = Double.parseDouble(request.getParameter("price"));
+        int amount = Integer.parseInt(request.getParameter("amount"));
+        String color = request.getParameter("color");
+        String description = request.getParameter("description");
+        String category_name = request.getParameter("category_name");
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = new Product(id,name,price,amount,color,description,category_name);
+        productService.update(product,id);
+        try {
+            response.sendRedirect("/product");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
