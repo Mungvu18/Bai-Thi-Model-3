@@ -113,6 +113,8 @@ public class ProductServlet extends HttpServlet {
 
     private void showCreatProduct(HttpServletRequest request, HttpServletResponse response) {
         RequestDispatcher dispatcher = request.getRequestDispatcher("Create.jsp");
+        List<Category> categories = categoryService.fillAll();
+        request.setAttribute("categories",categories);
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {

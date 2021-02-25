@@ -33,6 +33,17 @@
                             <a href="product?action=create"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
                             <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
                         </div>
+                        <form action="/search" method="post" class="form-inline my-2 my-lg-0">
+                            <div class="input-group input-group-sm">
+                                <input name="txt" type="text" class="form-control" aria-label="Small"
+                                       aria-describedby="inputGroup-sizing-sm" placeholder="Search...">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-secondary btn-number">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <table class="table table-striped table-hover">
