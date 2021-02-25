@@ -31,6 +31,20 @@ public class ProductServlet extends HttpServlet {
             case "":
                 showAllProduct(request, response);
                 break;
+            case "create":
+                showCreatProduct(request,response);
+                break;
+        }
+    }
+
+    private void showCreatProduct(HttpServletRequest request, HttpServletResponse response) {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("Create.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -48,4 +62,3 @@ public class ProductServlet extends HttpServlet {
         }
     }
     }
-}
