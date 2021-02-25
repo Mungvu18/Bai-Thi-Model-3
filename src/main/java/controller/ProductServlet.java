@@ -81,6 +81,18 @@ public class ProductServlet extends HttpServlet {
             case "edit":
                 showEditProduct(request,response);
                 break;
+            case "delete":
+                deleteProduct(request,response);
+                break;
+        }
+    }
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        productService.delete(id);
+        try {
+            response.sendRedirect("/product");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
     private void showEditProduct(HttpServletRequest request, HttpServletResponse response) {
